@@ -1,3 +1,5 @@
+/* General styling */
+
 body {
     background-color: #ecf5ff;
     font-size: 62.5%;
@@ -39,6 +41,8 @@ h3 {
     font-size: 2.8rem;
     font-weight: 500;
 }
+
+/* Flexbox styling */
 
 .container {
     width: 100vw;
@@ -100,4 +104,15 @@ h3 {
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
+}
+
+/* Choice styling */
+
+.choice-container {
+    display: flex;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    font-size: 1.8rem;
+    border: 0.1rem solid rgb(86, 165, 235, 0.25);
+    background-color: white;
 }
