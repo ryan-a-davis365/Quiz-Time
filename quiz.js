@@ -48,6 +48,11 @@ function startGame() {
 
 function getNewQuestion() {
 
+
+    if(availableQuestions.length === 0){
+        //go to the end page
+        return window.location.assign('end.html');
+    }
     questionCounter++;
     let questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
