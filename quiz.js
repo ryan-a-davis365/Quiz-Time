@@ -98,3 +98,15 @@ choices.forEach((choice) => {
     }
 
 startGame();
+
+//End Screen//
+
+const username = document.getElementById("username");
+const saveScoreBtn = document.getElementById("saveScoreBtn");
+username.addEventListener("keyup", () => {
+    saveScoreBtn.disabled = !username.value;
+});
+
+function saveHighScore(e) {
+    e.preventDefault();
+};
