@@ -49,6 +49,7 @@ function startGame() {
 
 function getNewQuestion() {
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+        localStorage.setItem("mostRecentScore", score);
         //go to the end page
         return window.location.assign('/end.html');
     }
@@ -76,37 +77,25 @@ choices.forEach((choice) => {
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset['number'];
 
-        const classToApply = 
+        const classToApply =
             selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
-            if(classToApply === 'correct') {
-                incrementScore(CORRECT_BONUS);
-            }
+        if (classToApply === 'correct') {
+            incrementScore(CORRECT_BONUS);
+        }
 
         selectedChoice.parentElement.classList.add(classToApply);
 
         setTimeout(() => {
-          selectedChoice.parentElement.classList.remove(classToApply);
-          getNewQuestion();
+            selectedChoice.parentElement.classList.remove(classToApply);
+            getNewQuestion();
         }, 1000);
-      });
     });
-
-    function incrementScore(num){
-        score +=num;
-        scoreText.innerText = score;
-    }
-
-startGame();
-
-//End Screen//
-
-const username = document.getElementById("username");
-const saveScoreBtn = document.getElementById("saveScoreBtn");
-username.addEventListener("keyup", () => {
-    saveScoreBtn.disabled = !username.value;
 });
 
-function saveHighScore(e) {
-    e.preventDefault();
-};
+function incrementScore(num) {
+    score += num;
+    scoreText.innerText = score;
+}
+
+startGame();
