@@ -7,7 +7,7 @@ const game = document.getElementById('game');
 const questionSelect = document.getElementById('questionSelect')
 const difficultySelect = document.getElementById('difficultySelect')
 const categorySelect = document.getElementById('categorySelect')
-
+const load = document.getElementById('loading')
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -52,8 +52,28 @@ fetch(
 const CORRECT_BONUS = 10;
 const MAX_QUESTIONS = 3;
 
-function categories () {
+function categories() {
+    loadingWheel(true);
+    getData(false);
+    fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple')
+        .then(response => response.json())
+        .then(category => {
+            let categoryList = category.trivia_categories;
+            categoryList.forEach(category => {
 
+                let categoryOption = document.createElement("option");
+                let categoryName = document.createElement("p");
+                let name = document.createTextNode(category.name);
+
+                categoryName.appendChild(name);
+                categoryOption.appendChild(categoryName);
+                categoryOption.id = category.id;
+                categoryOption.classList.add("category");
+                document.getElementById("categoryList").appendChild(categoryOption);
+            });
+            loadingWheel(false);
+        })
+        .catch(() => console.error());
 }
 
 function startGame() {
