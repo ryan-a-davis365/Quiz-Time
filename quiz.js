@@ -8,33 +8,39 @@ let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
+let questions = []
 
-let questions = [
-    {
-        question: "What is 10 + 10?",
-        choice1: "20",
-        choice2: "50",
-        choice3: "30",
-        choice4: "10",
-        answer: 1
-    },
-    {
-        question: "What is 30 + 30?",
-        choice1: "50",
-        choice2: "40",
-        choice3: "80",
-        choice4: "60",
-        answer: 4
-    },
-    {
-        question: "What is 15 + 15?",
-        choice1: "50",
-        choice2: "40",
-        choice3: "30",
-        choice4: "60",
-        answer: 3
-    }
-];
+fetch(
+    'https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple'
+)
+    .then((res) => {
+        return res.json();
+    })
+    .then((loadedQuestions) => {
+        questions = loadedQuestions.results.map((loadedQuestion) => {
+            const formattedQuestion = {
+                question: loadedQuestion.question,
+            };
+
+            const answerChoices = [...loadedQuestion.incorrect_answers];
+            formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
+            answerChoices.splice(
+                formattedQuestion.answer - 1,
+                0,
+                loadedQuestion.correct_answer
+            );
+
+            answerChoices.forEach((choice, index) => {
+                formattedQuestion['choice' + (index + 1)] = choice;
+            });
+
+            return formattedQuestion;
+        });
+        startGame();
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 
 //Constants//
 const CORRECT_BONUS = 10;
@@ -50,8 +56,6 @@ function startGame() {
 function getNewQuestion() {
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         localStorage.setItem("mostRecentScore", score);
-        //go to the end page
-        return window.location.assign('/end.html');
     }
     questionCounter++;
     questionCounterText.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
