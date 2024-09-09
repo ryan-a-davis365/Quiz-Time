@@ -15,13 +15,15 @@
     <div class="container">
         <div id="home" class="flex-center flex-row">
             <h2 class="btn">Choose a Topic</h2>
+            <select id="categorySelect">
+            </select>
             <h2 class="btn">Select Difficulty</h2>
-            <select>
+            <select id="difficultySelect">
                 <option>Easy</option>
                 <option>Medium</option>
                 <option>Hard</option>
             </select>
-            <h2 class="btn">How many questions?</h2>
+            <h2 id="questionSelect" class="btn">How many questions?</h2>
             <h2 class="btn">Lets go!</h2>
         </div>
     </div>
@@ -71,8 +73,8 @@
     <div class="container">
         <div id="end" class="flex-center flex-column">
             <h1 id="finalScore"></h1>
-            <a class="btn">Play Again</a>
-            <a class="btn">Go Home</a>
+            <h2 class="btn">Play Again</h2>
+            <h2 class="btn">Try a different quiz</h2>
         </div>
     </div>
 </body>

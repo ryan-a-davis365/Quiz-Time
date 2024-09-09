@@ -4,6 +4,10 @@ const questionCounterText = document.getElementById('questionCounter');
 const scoreText = document.getElementById('score');
 const loader = document.getElementById('loader');
 const game = document.getElementById('game');
+const questionSelect = document.getElementById('questionSelect')
+const difficultySelect = document.getElementById('difficultySelect')
+const categorySelect = document.getElementById('categorySelect')
+
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -47,6 +51,10 @@ fetch(
 //Constants//
 const CORRECT_BONUS = 10;
 const MAX_QUESTIONS = 3;
+
+function categories () {
+
+}
 
 function startGame() {
     questionCounter = 0;
