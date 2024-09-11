@@ -40,7 +40,11 @@ const CORRECT_BONUS = 1;
 const MAX_QUESTIONS = 3;
 
 function getQuestions() {
-    fetch('https://opentdb.com/api.php?amount=10&type=multiple')
+    let selectedCategory = document.getElementById('categorySelect');
+    let categoryId = selectedCategory.options[selectedCategory.selectedIndex].id;
+    let selectedDifficulty = document.getElementById('difficultySelect');
+    let difficulty = selectedDifficulty.options[selectedDifficulty.selectedIndex].text.toLowerCase();
+    fetch(`https://opentdb.com/api.php?amount=10&type=multiple&category=${categoryId}&difficulty=${difficulty}`)
         .then((res) => {
             return res.json();
         })
@@ -64,6 +68,7 @@ function getQuestions() {
 
                 return formattedQuestion;
             });
+            console.log(questions)
         })
         .catch((err) => {
             console.error(err);
