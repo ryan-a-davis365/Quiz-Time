@@ -12,7 +12,7 @@ const load = document.getElementById('loading');
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
-let questionCounter = 0;
+let questionCounter = 0; 
 let availableQuestions = [];
 let questions = []
 
@@ -37,7 +37,7 @@ fetch('https://opentdb.com/api_category.php')
 
 //Constants//
 const CORRECT_BONUS = 1;
-const MAX_QUESTIONS = 3;
+const MAX_QUESTIONS = 10;
 
 function getQuestions() {
     let selectedCategory = document.getElementById('categorySelect');
@@ -51,7 +51,8 @@ function getQuestions() {
         .then((loadedQuestions) => {
             questions = loadedQuestions.results.map((loadedQuestion) => {
                 const formattedQuestion = {
-                    question: loadedQuestion.question,
+                    question: loadedQuestion.question.replaceAll('&quot;', '"').replaceAll('&#039;', `'`)
+                    
                 };
 
                 const answerChoices = [...loadedQuestion.incorrect_answers];
