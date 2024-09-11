@@ -4,10 +4,10 @@ const questionCounterText = document.getElementById('questionCounter');
 const scoreText = document.getElementById('score');
 const loader = document.getElementById('loader');
 const game = document.getElementById('game');
-const questionSelect = document.getElementById('questionSelect')
-const difficultySelect = document.getElementById('difficultySelect')
-const categorySelect = document.getElementById('categorySelect')
-const load = document.getElementById('loading')
+const questionSelect = document.getElementById('questionSelect');
+const difficultySelect = document.getElementById('difficultySelect');
+const categorySelect = document.getElementById('categorySelect');
+const load = document.getElementById('loading');
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -16,66 +16,64 @@ let questionCounter = 0;
 let availableQuestions = [];
 let questions = []
 
-fetch('https://opentdb.com/api.php?amount=10')
-    .then((res) => {
-        return res.json();
-    })
-    .then((loadedQuestions) => {
-        questions = loadedQuestions.results.map((loadedQuestion) => {
-            const formattedQuestion = {
-                question: loadedQuestion.question,
-            };
+fetch('https://opentdb.com/api_category.php')
+.then(response => response.json())
+.then(category => {
+    let categorySelect = category.trivia_categories;
+    categorySelect.forEach(category => {
 
-            const answerChoices = [...loadedQuestion.incorrect_answers];
-            formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
-            answerChoices.splice(
-                formattedQuestion.answer - 1,
-                0,
-                loadedQuestion.correct_answer
-            );
+        let categoryOption = document.createElement("option");
+        let categoryName = document.createElement("p");
+        let name = document.createTextNode(category.name);
 
-            answerChoices.forEach((choice, index) => {
-                formattedQuestion['choice' + (index + 1)] = choice;
-            });
-
-            return formattedQuestion;
-        });
-        startGame();
-    })
-    .catch((err) => {
-        console.error(err);
+        categoryName.appendChild(name);
+        categoryOption.appendChild(categoryName);
+        categoryOption.id = category.id;
+        categoryOption.classList.add("category");
+        document.getElementById("categorySelect").appendChild(categoryOption);
     });
+})
+.catch(() => console.error());
 
 //Constants//
-const CORRECT_BONUS = 10;
+const CORRECT_BONUS = 1;
 const MAX_QUESTIONS = 3;
 
-function getCategories() {
-    fetch('https://opentdb.com/api_category.php')
-        .then(response => response.json())
-        .then(category => {
-            let categorySelect = category.trivia_categories;
-            categorySelect.forEach(category => {
+function getQuestions() {
+    fetch('https://opentdb.com/api.php?amount=10&type=multiple')
+        .then((res) => {
+            return res.json();
+        })
+        .then((loadedQuestions) => {
+            questions = loadedQuestions.results.map((loadedQuestion) => {
+                const formattedQuestion = {
+                    question: loadedQuestion.question,
+                };
 
-                let categoryOption = document.createElement("option");
-                let categoryName = document.createElement("p");
-                let name = document.createTextNode(category.name);
+                const answerChoices = [...loadedQuestion.incorrect_answers];
+                formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
+                answerChoices.splice(
+                    formattedQuestion.answer - 1,
+                    0,
+                    loadedQuestion.correct_answer
+                );
 
-                categoryName.appendChild(name);
-                categoryOption.appendChild(categoryName);
-                categoryOption.id = category.id;
-                categoryOption.classList.add("category");
-                document.getElementById("categorySelect").appendChild(categoryOption);
+                answerChoices.forEach((choice, index) => {
+                    formattedQuestion['choice' + (index + 1)] = choice;
+                });
+
+                return formattedQuestion;
             });
         })
-        .catch(() => console.error());
+        .catch((err) => {
+            console.error(err);
+        });
 }
 
 function startGame() {
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions];
-    getCategories();
     getNewQuestion();
     game.classList.remove("hidden");
     loader.classList.add("hidden");
@@ -129,5 +127,3 @@ function incrementScore(num) {
     score += num;
     scoreText.innerText = score;
 }
-
-startGame();
