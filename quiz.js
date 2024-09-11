@@ -16,9 +16,7 @@ let questionCounter = 0;
 let availableQuestions = [];
 let questions = []
 
-fetch(
-    'https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple'
-)
+fetch('https://opentdb.com/api.php?amount=10')
     .then((res) => {
         return res.json();
     })
@@ -52,14 +50,12 @@ fetch(
 const CORRECT_BONUS = 10;
 const MAX_QUESTIONS = 3;
 
-function categories() {
-    loadingWheel(true);
-    getData(false);
-    fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple')
+function getCategories() {
+    fetch('https://opentdb.com/api_category.php')
         .then(response => response.json())
         .then(category => {
-            let categoryList = category.trivia_categories;
-            categoryList.forEach(category => {
+            let categorySelect = category.trivia_categories;
+            categorySelect.forEach(category => {
 
                 let categoryOption = document.createElement("option");
                 let categoryName = document.createElement("p");
@@ -69,9 +65,8 @@ function categories() {
                 categoryOption.appendChild(categoryName);
                 categoryOption.id = category.id;
                 categoryOption.classList.add("category");
-                document.getElementById("categoryList").appendChild(categoryOption);
+                document.getElementById("categorySelect").appendChild(categoryOption);
             });
-            loadingWheel(false);
         })
         .catch(() => console.error());
 }
@@ -79,21 +74,22 @@ function categories() {
 function startGame() {
     questionCounter = 0;
     score = 0;
-    availableQuesions = [...questions];
+    availableQuestions = [...questions];
+    getCategories();
     getNewQuestion();
     game.classList.remove("hidden");
     loader.classList.add("hidden");
 };
 
 function getNewQuestion() {
-    if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+    if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         localStorage.setItem("mostRecentScore", score);
     }
     questionCounter++;
     questionCounterText.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
 
-    const questionIndex = Math.floor(Math.random() * availableQuesions.length);
-    currentQuestion = availableQuesions[questionIndex];
+    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+    currentQuestion = availableQuestions[questionIndex];
     question.innerText = currentQuestion.question;
 
     choices.forEach((choice) => {
@@ -101,7 +97,7 @@ function getNewQuestion() {
         choice.innerText = currentQuestion['choice' + number];
     });
 
-    availableQuesions.splice(questionIndex, 1);
+    availableQuestions.splice(questionIndex, 1);
     acceptingAnswers = true;
 };
 
