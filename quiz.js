@@ -12,7 +12,7 @@ const load = document.getElementById('loading');
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
-let questionCounter = 0; 
+let questionCounter = 0;
 let availableQuestions = [];
 let questions = []
 
@@ -44,7 +44,9 @@ function getQuestions() {
     let categoryId = selectedCategory.options[selectedCategory.selectedIndex].id;
     let selectedDifficulty = document.getElementById('difficultySelect');
     let difficulty = selectedDifficulty.options[selectedDifficulty.selectedIndex].text.toLowerCase();
-    fetch(`https://opentdb.com/api.php?amount=10&type=multiple&category=${categoryId}&difficulty=${difficulty}`)
+    let selectedQuestion = document.getElementById('questionSelect');
+    let questionId = selectedQuestion.options[selectedQuestion.selectedIndex].text;
+    fetch(`https://opentdb.com/api.php?amount=${questionId}&type=multiple&category=${categoryId}&difficulty=${difficulty}`)
         .then((res) => {
             return res.json();
         })
