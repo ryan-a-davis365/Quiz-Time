@@ -15,27 +15,25 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 let questions = [];
-let selectedNumberOfQuestions = 0
-selectedNumberOfQuestions = parseInt(questionId);
 
 fetch('https://opentdb.com/api_category.php')
-.then(response => response.json())
-.then(category => {
-    let categorySelect = category.trivia_categories;
-    categorySelect.forEach(category => {
+    .then(response => response.json())
+    .then(category => {
+        let categorySelect = category.trivia_categories;
+        categorySelect.forEach(category => {
 
-        let categoryOption = document.createElement("option");
-        let categoryName = document.createElement("p");
-        let name = document.createTextNode(category.name);
+            let categoryOption = document.createElement("option");
+            let categoryName = document.createElement("p");
+            let name = document.createTextNode(category.name);
 
-        categoryName.appendChild(name);
-        categoryOption.appendChild(categoryName);
-        categoryOption.id = category.id;
-        categoryOption.classList.add("category");
-        document.getElementById("categorySelect").appendChild(categoryOption);
-    });
-})
-.catch(() => console.error());
+            categoryName.appendChild(name);
+            categoryOption.appendChild(categoryName);
+            categoryOption.id = category.id;
+            categoryOption.classList.add("category");
+            document.getElementById("categorySelect").appendChild(categoryOption);
+        });
+    })
+    .catch(() => console.error());
 
 //Constants//
 const CORRECT_BONUS = 1;
@@ -47,6 +45,9 @@ function getQuestions() {
     let difficulty = selectedDifficulty.options[selectedDifficulty.selectedIndex].text.toLowerCase();
     let selectedQuestion = document.getElementById('questionSelect');
     let questionId = selectedQuestion.options[selectedQuestion.selectedIndex].text;
+    let selectedNumberOfQuestions = 0
+    selectedNumberOfQuestions = parseInt(questionId);
+    
     fetch(`https://opentdb.com/api.php?amount=${questionId}&type=multiple&category=${categoryId}&difficulty=${difficulty}`)
         .then((res) => {
             return res.json();
@@ -55,7 +56,7 @@ function getQuestions() {
             questions = loadedQuestions.results.map((loadedQuestion) => {
                 const formattedQuestion = {
                     question: loadedQuestion.question.replaceAll('&quot;', '"').replaceAll('&#039;', `'`)
-                    
+
                 };
 
                 const answerChoices = [...loadedQuestion.incorrect_answers];
