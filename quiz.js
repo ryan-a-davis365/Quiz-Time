@@ -14,7 +14,9 @@ let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
-let questions = []
+let questions = [];
+let selectedNumberOfQuestions = 0
+selectedNumberOfQuestions = parseInt(questionId);
 
 fetch('https://opentdb.com/api_category.php')
 .then(response => response.json())
@@ -70,6 +72,7 @@ function getQuestions() {
 
                 return formattedQuestion;
             });
+            console.log(questions)
         })
         .catch((err) => {
             console.error(err);
@@ -86,11 +89,11 @@ function startGame() {
 };
 
 function getNewQuestion() {
-    if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+    if (availableQuestions.length === 0 || questionCounter >= selectedNumberOfQuestions) {
         localStorage.setItem("mostRecentScore", score);
     }
     questionCounter++;
-    questionCounterText.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
+    questionCounterText.innerText = `${questionCounter}/${selectedNumberOfQuestions}`;
 
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
