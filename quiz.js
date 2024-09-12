@@ -37,7 +37,6 @@ fetch('https://opentdb.com/api_category.php')
 
 //Constants//
 const CORRECT_BONUS = 1;
-const MAX_QUESTIONS = 10;
 
 function getQuestions() {
     let selectedCategory = document.getElementById('categorySelect');
@@ -71,7 +70,6 @@ function getQuestions() {
 
                 return formattedQuestion;
             });
-            console.log(questions)
         })
         .catch((err) => {
             console.error(err);
