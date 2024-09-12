@@ -44,11 +44,11 @@ function getQuestions() {
     let selectedDifficulty = document.getElementById('difficultySelect');
     let difficulty = selectedDifficulty.options[selectedDifficulty.selectedIndex].text.toLowerCase();
     let selectedQuestion = document.getElementById('questionSelect');
-    let questionId = selectedQuestion.options[selectedQuestion.selectedIndex].text;
+    let questionCount = selectedQuestion.options[selectedQuestion.selectedIndex].text;
     let selectedNumberOfQuestions = 0
-    selectedNumberOfQuestions = parseInt(questionId);
+    selectedNumberOfQuestions = parseInt(questionCount);
     
-    fetch(`https://opentdb.com/api.php?amount=${questionId}&type=multiple&category=${categoryId}&difficulty=${difficulty}`)
+    fetch(`https://opentdb.com/api.php?amount=${questionCount}&type=multiple&category=${categoryId}&difficulty=${difficulty}`)
         .then((res) => {
             return res.json();
         })
@@ -85,8 +85,8 @@ function startGame() {
     score = 0;
     availableQuestions = [...questions];
     getNewQuestion();
-    game.classList.remove("hidden");
     loader.classList.add("hidden");
+    game.classList.remove("hidden");
 };
 
 function getNewQuestion() {
