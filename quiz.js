@@ -45,7 +45,7 @@ function getQuestions() {
     let difficulty = selectedDifficulty.options[selectedDifficulty.selectedIndex].text.toLowerCase();
     let selectedQuestion = document.getElementById('questionSelect');
     let questionCount = selectedQuestion.options[selectedQuestion.selectedIndex].text;
-    let selectedNumberOfQuestions = 0
+    selectedNumberOfQuestions = 0
     selectedNumberOfQuestions = parseInt(questionCount);
     
     fetch(`https://opentdb.com/api.php?amount=${questionCount}&type=multiple&category=${categoryId}&difficulty=${difficulty}`)
@@ -73,7 +73,7 @@ function getQuestions() {
 
                 return formattedQuestion;
             });
-            console.log(questions)
+            startGame();
         })
         .catch((err) => {
             console.error(err);
@@ -95,7 +95,6 @@ function getNewQuestion() {
     }
     questionCounter++;
     questionCounterText.innerText = `${questionCounter}/${selectedNumberOfQuestions}`;
-
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
     question.innerText = currentQuestion.question;
