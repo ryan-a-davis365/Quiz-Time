@@ -8,6 +8,7 @@ const questionSelect = document.getElementById('questionSelect');
 const difficultySelect = document.getElementById('difficultySelect');
 const categorySelect = document.getElementById('categorySelect');
 const load = document.getElementById('loading');
+const finalScore = document.getElementById('finalScore');
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -88,11 +89,14 @@ function startGame() {
     loader.classList.add("hidden");
     game.classList.remove("hidden");
     home.classList.add("hidden");
+    console.log(finalScore);
 };
 
 function getNewQuestion() {
-    if (availableQuestions.length == 0 || questionCounter >= selectedNumberOfQuestions) {
-        localStorage.setItem("mostRecentScore", score);
+    if (availableQuestions.length == 0) {
+        game.classList.add("hidden");
+        finalScore.classList.remove ("hidden");
+        score.innerHTML = (`Congratulations you scored ${score} / ${selectedNumberOfQuestions}`);
     }
     questionCounter++;
     questionCounterText.innerText = `${questionCounter}/${selectedNumberOfQuestions}`;
@@ -108,11 +112,9 @@ function getNewQuestion() {
     availableQuestions.splice(questionIndex, 1);
     acceptingAnswers = true;
 };
-
 choices.forEach((choice) => {
     choice.addEventListener('click', (e) => {
         if (!acceptingAnswers) return;
-
         acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset['number'];
