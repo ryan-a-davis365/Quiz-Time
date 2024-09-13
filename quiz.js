@@ -57,7 +57,6 @@ function getQuestions() {
             questions = loadedQuestions.results.map((loadedQuestion) => {
                 const formattedQuestion = {
                     question: loadedQuestion.question.replaceAll('&quot;', '"').replaceAll('&#039;', `'`)
-
                 };
 
                 const answerChoices = [...loadedQuestion.incorrect_answers];
@@ -89,14 +88,13 @@ function startGame() {
     loader.classList.add("hidden");
     game.classList.remove("hidden");
     home.classList.add("hidden");
-    console.log(finalScore);
 };
 
 function getNewQuestion() {
     if (availableQuestions.length == 0) {
         game.classList.add("hidden");
         finalScore.classList.remove ("hidden");
-        score.innerHTML = (`Congratulations you scored ${score} / ${selectedNumberOfQuestions}`);
+        finalScore.innerHTML = (`Congratulations you scored ${score} / ${selectedNumberOfQuestions}`);
     }
     questionCounter++;
     questionCounterText.innerText = `${questionCounter}/${selectedNumberOfQuestions}`;
