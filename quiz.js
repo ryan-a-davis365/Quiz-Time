@@ -87,10 +87,11 @@ function startGame() {
     getNewQuestion();
     loader.classList.add("hidden");
     game.classList.remove("hidden");
+    home.classList.add("hidden");
 };
 
 function getNewQuestion() {
-    if (availableQuestions.length === 0 || questionCounter >= selectedNumberOfQuestions) {
+    if (availableQuestions.length == 0 || questionCounter >= selectedNumberOfQuestions) {
         localStorage.setItem("mostRecentScore", score);
     }
     questionCounter++;
