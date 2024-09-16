@@ -59,7 +59,7 @@ function getQuestions() {
                     question: loadedQuestion.question
                 };
 
-                const answerChoices = [...loadedQuestion.incorrect_answers];
+                const answerChoices = loadedQuestion.incorrect_answers;
                 formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
                 answerChoices.splice(
                     formattedQuestion.answer - 1,
@@ -80,6 +80,10 @@ function getQuestions() {
         });
 }
 
+/**
+ * Starts the game
+ */
+
 function startGame() {
     questionCounter = 0;
     score = 0;
@@ -89,6 +93,12 @@ function startGame() {
     game.classList.remove("hidden");
     home.classList.add("hidden");
 };
+
+/**
+ * Gets the next question if one is available
+ * else
+ * it ends the game completing the users final score
+ */
 
 function getNewQuestion() {
     if (availableQuestions.length == 0) {
@@ -110,6 +120,16 @@ function getNewQuestion() {
         availableQuestions.splice(questionIndex, 1);
         acceptingAnswers = true;
     };
+}
+
+/**
+ * Increments the score
+ * @param {number} num - The number to increase it by
+ */
+
+function incrementScore(num) {
+    score += num;
+    scoreText.innerHTML = score;
 }
 
 choices.forEach((choice) => {
@@ -134,8 +154,3 @@ choices.forEach((choice) => {
         }, 1000);
     });
 });
-
-function incrementScore(num) {
-    score += num;
-    scoreText.innerHTML = score;
-}
