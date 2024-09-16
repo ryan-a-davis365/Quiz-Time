@@ -57,42 +57,42 @@ function prepareUrl() {
 
     const url = `https://opentdb.com/api.php?amount=${selectedNumberOfQuestions}&type=multiple&category=${categoryId}&difficulty=${difficulty}`
     getQuestions(url);
-    }
+}
 
-    function getQuestions(url) {
-        fetch(url)
-          .then((res) => {
+function getQuestions(url) {
+    fetch(url)
+        .then((res) => {
             return res.json();
-          })
-          .then((loadedQuestions) => {
+        })
+        .then((loadedQuestions) => {
             if (loadedQuestions.results.length <= 0) {
-              errorState.classList.remove('hidden');
+                errorState.classList.remove('hidden');
             }
             questions = loadedQuestions.results.map((loadedQuestion) => {
-              const formattedQuestion = {
-                question: loadedQuestion.question
-              };
-      
-              const answerChoices = loadedQuestion.incorrect_answers;
-              formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
-              answerChoices.splice(
-                formattedQuestion.answer - 1,
-                0,
-                loadedQuestion.correct_answer
-              );
-      
-              answerChoices.forEach((choice, index) => {
-                formattedQuestion['choice' + (index + 1)] = choice;
-              });
-      
-              return formattedQuestion;
+                const formattedQuestion = {
+                    question: loadedQuestion.question
+                };
+
+                const answerChoices = loadedQuestion.incorrect_answers;
+                formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
+                answerChoices.splice(
+                    formattedQuestion.answer - 1,
+                    0,
+                    loadedQuestion.correct_answer
+                );
+
+                answerChoices.forEach((choice, index) => {
+                    formattedQuestion['choice' + (index + 1)] = choice;
+                });
+
+                return formattedQuestion;
             });
-          })
-          .catch((err) => {
+        })
+        .catch((err) => {
             console.error(err);
-          })
-          .finally(() => startGame());
-      }
+        })
+        .finally(() => startGame());
+}
 
 /**
  * Starts the game
