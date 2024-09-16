@@ -48,7 +48,7 @@ function getQuestions() {
     let questionCount = selectedQuestion.options[selectedQuestion.selectedIndex].text;
     selectedNumberOfQuestions = 0
     selectedNumberOfQuestions = parseInt(questionCount);
-    
+
     fetch(`https://opentdb.com/api.php?amount=${questionCount}&type=multiple&category=${categoryId}&difficulty=${difficulty}`)
         .then((res) => {
             return res.json();
@@ -56,7 +56,7 @@ function getQuestions() {
         .then((loadedQuestions) => {
             questions = loadedQuestions.results.map(loadedQuestion => {
                 const formattedQuestion = {
-                    question: loadedQuestion.question.replaceAll('&quot;', '"').replaceAll('&#039;', `'`)
+                    question: loadedQuestion.question
                 };
 
                 const answerChoices = [...loadedQuestion.incorrect_answers];
@@ -93,23 +93,25 @@ function startGame() {
 function getNewQuestion() {
     if (availableQuestions.length == 0) {
         game.classList.add("hidden");
-        finalScore.classList.remove ("hidden");
+        finalScore.classList.remove("hidden");
         finalScore.innerHTML = (`Congratulations you scored: ${score} / ${selectedNumberOfQuestions}`);
-    }
-    questionCounter++;
-    questionCounterText.innerText = `${questionCounter}/${selectedNumberOfQuestions}`;
-    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
-    currentQuestion = availableQuestions[questionIndex];
-    question.innerText = currentQuestion.question;
+    } else {
+        questionCounter++;
+        questionCounterText.innerHTML = `${questionCounter}/${selectedNumberOfQuestions}`;
+        const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+        currentQuestion = availableQuestions[questionIndex];
+        question.innerHTML = currentQuestion.question;
 
-    choices.forEach((choice) => {
-        const number = choice.dataset['number'];
-        choice.innerText = currentQuestion['choice' + number];
-    });
+        choices.forEach((choice) => {
+            const number = choice.dataset['number'];
+            choice.innerHTML = currentQuestion['choice' + number];
+        });
 
-    availableQuestions.splice(questionIndex, 1);
-    acceptingAnswers = true;
-};
+        availableQuestions.splice(questionIndex, 1);
+        acceptingAnswers = true;
+    };
+}
+
 choices.forEach((choice) => {
     choice.addEventListener('click', (e) => {
         if (!acceptingAnswers) return;
@@ -135,5 +137,5 @@ choices.forEach((choice) => {
 
 function incrementScore(num) {
     score += num;
-    scoreText.innerText = score;
+    scoreText.innerHTML = score;
 }
