@@ -17,6 +17,8 @@ let questionCounter = 0;
 let availableQuestions = [];
 let questions = [];
 let selectedNumberOfQuestions
+let restartQuiz = document.getElementById("restartSame")
+let restartNew = document.getElementById("restartNew")
 const CORRECT_BONUS = 1;
 
 /**
@@ -24,24 +26,24 @@ const CORRECT_BONUS = 1;
  */
 
 function getCategories() {
-    fetch('https://opentdb.com/api_category.php')
-        .then(response => response.json())
-        .then(category => {
-            const categoryArray = category.trivia_categories;
-            categoryArray.forEach((category) => {
+  fetch('https://opentdb.com/api_category.php')
+    .then(response => response.json())
+    .then(category => {
+      const categoryArray = category.trivia_categories;
+      categoryArray.forEach((category) => {
 
-                const categoryOption = document.createElement("option");
-                const categoryName = document.createElement("p");
-                const name = document.createTextNode(category.name);
+        const categoryOption = document.createElement("option");
+        const categoryName = document.createElement("p");
+        const name = document.createTextNode(category.name);
 
-                categoryName.appendChild(name);
-                categoryOption.appendChild(categoryName);
-                categoryOption.id = category.id;
-                categoryOption.classList.add("category");
-                categorySelect.appendChild(categoryOption);
-            });
-        })
-        .catch(() => console.error());
+        categoryName.appendChild(name);
+        categoryOption.appendChild(categoryName);
+        categoryOption.id = category.id;
+        categoryOption.classList.add("category");
+        categorySelect.appendChild(categoryOption);
+      });
+    })
+    .catch(() => console.error());
 }
 
 /**
@@ -49,63 +51,63 @@ function getCategories() {
  */
 
 function prepareUrl() {
-    const categoryId = categorySelect.options[categorySelect.selectedIndex].id;
-    const difficulty = difficultySelect.options[difficultySelect.selectedIndex].text.toLowerCase();
-    selectedNumberOfQuestions = parseInt(
-        questionSelect.options[questionSelect.selectedIndex].text
-    );
+  const categoryId = categorySelect.options[categorySelect.selectedIndex].id;
+  const difficulty = difficultySelect.options[difficultySelect.selectedIndex].text.toLowerCase();
+  selectedNumberOfQuestions = parseInt(
+    questionSelect.options[questionSelect.selectedIndex].text
+  );
 
-    const url = `https://opentdb.com/api.php?amount=${selectedNumberOfQuestions}&type=multiple&category=${categoryId}&difficulty=${difficulty}`
-    getQuestions(url);
-    }
+  const url = `https://opentdb.com/api.php?amount=${selectedNumberOfQuestions}&type=multiple&category=${categoryId}&difficulty=${difficulty}`
+  getQuestions(url);
+}
 
-    function getQuestions(url) {
-        fetch(url)
-          .then((res) => {
-            return res.json();
-          })
-          .then((loadedQuestions) => {
-            if (loadedQuestions.results.length <= 0) {
-              errorState.classList.remove('hidden');
-            }
-            questions = loadedQuestions.results.map((loadedQuestion) => {
-              const formattedQuestion = {
-                question: loadedQuestion.question
-              };
-      
-              const answerChoices = loadedQuestion.incorrect_answers;
-              formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
-              answerChoices.splice(
-                formattedQuestion.answer - 1,
-                0,
-                loadedQuestion.correct_answer
-              );
-      
-              answerChoices.forEach((choice, index) => {
-                formattedQuestion['choice' + (index + 1)] = choice;
-              });
-      
-              return formattedQuestion;
-            });
-          })
-          .catch((err) => {
-            console.error(err);
-          })
-          .finally(() => startGame());
+function getQuestions(url) {
+  fetch(url)
+    .then((res) => {
+      return res.json();
+    })
+    .then((loadedQuestions) => {
+      if (loadedQuestions.results.length <= 0) {
+        errorState.classList.remove('hidden');
       }
+      questions = loadedQuestions.results.map((loadedQuestion) => {
+        const formattedQuestion = {
+          question: loadedQuestion.question
+        };
+
+        const answerChoices = loadedQuestion.incorrect_answers;
+        formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
+        answerChoices.splice(
+          formattedQuestion.answer - 1,
+          0,
+          loadedQuestion.correct_answer
+        );
+
+        answerChoices.forEach((choice, index) => {
+          formattedQuestion['choice' + (index + 1)] = choice;
+        });
+
+        return formattedQuestion;
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => startGame());
+}
 
 /**
  * Starts the game
  */
 
 function startGame() {
-    questionCounter = 0;
-    score = 0;
-    availableQuestions = [...questions];
-    getNewQuestion();
-    loader.classList.add("hidden");
-    game.classList.remove("hidden");
-    home.classList.add("hidden");
+  questionCounter = 0;
+  score = 0;
+  availableQuestions = [...questions];
+  getNewQuestion();
+  loader.classList.add("hidden");
+  game.classList.remove("hidden");
+  home.classList.add("hidden");
 };
 
 /**
@@ -115,25 +117,25 @@ function startGame() {
  */
 
 function getNewQuestion() {
-    if (availableQuestions.length == 0) {
-        game.classList.add("hidden");
-        finalScore.classList.remove("hidden");
-        finalScore.innerHTML = `Congratulations you scored: ${score} / ${selectedNumberOfQuestions}`;
-    } else {
-        questionCounter++;
-        questionCounterText.innerHTML = `${questionCounter}/${selectedNumberOfQuestions}`;
-        const questionIndex = Math.floor(Math.random() * availableQuestions.length);
-        currentQuestion = availableQuestions[questionIndex];
-        question.innerHTML = currentQuestion.question;
+  if (availableQuestions.length == 0) {
+    game.classList.add("hidden");
+    finalScore.classList.remove("hidden");
+    finalScore.innerHTML = `Congratulations you scored: ${score} / ${selectedNumberOfQuestions}`;
+  } else {
+    questionCounter++;
+    questionCounterText.innerHTML = `${questionCounter}/${selectedNumberOfQuestions}`;
+    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+    currentQuestion = availableQuestions[questionIndex];
+    question.innerHTML = currentQuestion.question;
 
-        choices.forEach((choice) => {
-            const number = choice.dataset['number'];
-            choice.innerHTML = currentQuestion['choice' + number];
-        });
+    choices.forEach((choice) => {
+      const number = choice.dataset['number'];
+      choice.innerHTML = currentQuestion['choice' + number];
+    });
 
-        availableQuestions.splice(questionIndex, 1);
-        acceptingAnswers = true;
-    };
+    availableQuestions.splice(questionIndex, 1);
+    acceptingAnswers = true;
+  };
 }
 
 /**
@@ -142,31 +144,31 @@ function getNewQuestion() {
  */
 
 function incrementScore(num) {
-    score += num;
-    scoreText.innerHTML = score;
+  score += num;
+  scoreText.innerHTML = score;
 }
 
 choices.forEach((choice) => {
-    choice.addEventListener('click', (e) => {
-        if (!acceptingAnswers) return;
-        acceptingAnswers = false;
-        const selectedChoice = e.target;
-        const selectedAnswer = selectedChoice.dataset['number'];
+  choice.addEventListener('click', (e) => {
+    if (!acceptingAnswers) return;
+    acceptingAnswers = false;
+    const selectedChoice = e.target;
+    const selectedAnswer = selectedChoice.dataset['number'];
 
-        const classToApply =
-            selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+    const classToApply =
+      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
-        if (classToApply === 'correct') {
-            incrementScore(CORRECT_BONUS);
-        }
+    if (classToApply === 'correct') {
+      incrementScore(CORRECT_BONUS);
+    }
 
-        selectedChoice.parentElement.classList.add(classToApply);
+    selectedChoice.parentElement.classList.add(classToApply);
 
-        setTimeout(() => {
-            selectedChoice.parentElement.classList.remove(classToApply);
-            getNewQuestion();
-        }, 1000);
-    });
+    setTimeout(() => {
+      selectedChoice.parentElement.classList.remove(classToApply);
+      getNewQuestion();
+    }, 1000);
+  });
 });
 
 getCategories();
