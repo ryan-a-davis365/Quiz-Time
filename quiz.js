@@ -4,6 +4,8 @@ const questionCounterText = document.getElementById('questionCounter');
 const scoreText = document.getElementById('score');
 const loader = document.getElementById('loader');
 const game = document.getElementById('game');
+const end = document.getElementById('end');
+const home = document.getElementById('home');
 const questionSelect = document.getElementById('questionSelect');
 const difficultySelect = document.getElementById('difficultySelect');
 const categoryArray = document.getElementById('categorySelect');
@@ -89,9 +91,15 @@ function getQuestions(url) {
 
         return formattedQuestion;
       });
+      if (question.length > 0) {
+        startGame();
+      } else {
+        displayErrors();
+      }
     })
     .catch((err) => {
       console.error(err);
+      displayErrors();
     })
     .finally(() => startGame());
 }
@@ -170,5 +178,18 @@ choices.forEach((choice) => {
     }, 1000);
   });
 });
+
+function displayErrors() {
+  restartQuiz.addEventListener('click', () => {
+    end.classList.add("hidden");
+    getQuestions();
+  });
+  
+  restartNew.addEventListener('click', () => {
+    end.classList.add("hidden");
+    home.classList.remove("hidden");
+  })
+  
+}
 
 getCategories();
