@@ -13,14 +13,14 @@
 <body>
     <h1 id="title">Quiz Time</h1>
     <section id ="home" class="container hidden">
-        <div class="flex-center flex-row">
+        <div>
             <h2 class="choices">Choose a Topic</h2>
-            <select id="categorySelect">
+            <select id="categorySelect" class="custom-select">
             </select>
         </div>
         <div>
             <h2 class="choices">Select Difficulty</h2>
-            <select id="difficultySelect">
+            <select id="difficultySelect" class="custom-select">
                 <option>Easy</option>
                 <option>Medium</option>
                 <option>Hard</option>
@@ -28,7 +28,7 @@
         </div>
         <div>
             <h2 class="choices">How many questions?</h2>
-            <select id="questionSelect">
+            <select id="questionSelect" class="custom-select">
                 <option>10</option>
                 <option>15</option>
                 <option>20</option>
@@ -84,9 +84,10 @@
 
     <!-- End Screen -->
     <section id="end" class="container hidden">
-        <div id="finalScore" class="flex-center flex-column">
-            <button class="btn" id="restartSame">Play Again</button>
-            <button class="btn" id="restartNew">Try a different quiz</button>
+        <div id="finalScore" class="flex-center flex-column"></div>
+        <div class="flex-center flex-column">
+            <a class="btn" id="restartSame">Play Again</a>
+            <a class="btn" id="restartNew">Try a different quiz</a>
         </div>
     </section>
     <script src="quiz.js"></script>
