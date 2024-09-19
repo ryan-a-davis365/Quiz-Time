@@ -9,35 +9,43 @@
 </head>
 
 <!-- Home Screen -->
+
 <body>
     <h1 id="title">Quiz Time</h1>
-    <div class="container">
-        <div id="home" class="flex-center flex-row">
-            <h2 class="btn">Choose a Topic</h2>
+    <section id ="home" class="container hidden">
+        <div class="flex-center flex-row">
+            <h2 class="choices">Choose a Topic</h2>
             <select id="categorySelect">
             </select>
-            <h2 class="btn">Select Difficulty</h2>
+        </div>
+        <div>
+            <h2 class="choices">Select Difficulty</h2>
             <select id="difficultySelect">
                 <option>Easy</option>
                 <option>Medium</option>
                 <option>Hard</option>
             </select>
-            <h2 class="btn">How many questions?</h2>
+        </div>
+        <div>
+            <h2 class="choices">How many questions?</h2>
             <select id="questionSelect">
                 <option>10</option>
                 <option>15</option>
                 <option>20</option>
                 <option>25</option>
             </select>
+        </div>
+        <div>
             <button class="btn" onclick="prepareUrl()">Lets go!</button>
         </div>
-    </div>
+    </section>
 
     <!-- Quiz Screen -->
-    <div class="container">
+    <section id="game" class="container hidden">
         <div id="loader"></div>
-        <div id="game" class="justify-center flex-column hidden">
-            <h1 id="errorState" class="hidden">Error: Not enough questions for this category, please choose a lower amount.</h1>
+        <div class="justify-center flex-column">
+            <h1 id="errorState" class="hidden">Error: Not enough questions for this category, please choose a lower
+                amount.</h1>
             <div id="hud">
                 <div id="hud-item">
                     <p class="hud-prefix">
@@ -72,16 +80,15 @@
                 <p class="choice-text" data-number="4"></p>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- End Screen -->
-    <div class="container">
-        <div id="end" class="flex-center flex-column">
-            <h1 id="finalScore" class="hidden"></h1>
+    <section id="end" class="container hidden">
+        <div id="finalScore" class="flex-center flex-column">
             <button class="btn" id="restartSame">Play Again</button>
             <button class="btn" id="restartNew">Try a different quiz</button>
         </div>
-    </div>
+    </section>
     <script src="quiz.js"></script>
 </body>
 

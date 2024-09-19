@@ -44,6 +44,7 @@ function getCategories() {
         categoryOption.classList.add("category");
         categorySelect.appendChild(categoryOption);
       });
+      home.classList.remove("hidden");
     })
     .catch(() => console.error());
 }
@@ -127,7 +128,7 @@ function startGame() {
 function getNewQuestion() {
   if (availableQuestions.length == 0) {
     game.classList.add("hidden");
-    finalScore.classList.remove("hidden");
+    end.classList.remove("hidden");
     finalScore.innerHTML = `Congratulations you scored: ${score} / ${selectedNumberOfQuestions}`;
   } else {
     questionCounter++;
@@ -189,7 +190,6 @@ function displayErrors() {
     end.classList.add("hidden");
     home.classList.remove("hidden");
   })
-  
 }
 
 getCategories();
