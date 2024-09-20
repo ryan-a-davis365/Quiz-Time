@@ -8,34 +8,37 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<!-- Home Screen -->
-
 <body>
     <h1 id="title">Quiz Time</h1>
-    <section id ="home" class="container hidden">
-        <div>
-            <h2 class="choices">Choose a Topic</h2>
-            <select id="categorySelect" class="custom-select">
-            </select>
+
+    <!-- Home Screen -->
+
+    <section id="home" class="container">
+        <div class="selection-row">
+            <div>
+                <h2 class="choices">Choose a Topic</h2>
+                <select id="categorySelect" class="custom-select">
+                </select>
+            </div>
+            <div>
+                <h2 class="choices">Select Difficulty</h2>
+                <select id="difficultySelect" class="custom-select">
+                    <option>Easy</option>
+                    <option>Medium</option>
+                    <option>Hard</option>
+                </select>
+            </div>
+            <div>
+                <h2 class="choices">How many questions?</h2>
+                <select id="questionSelect" class="custom-select">
+                    <option>10</option>
+                    <option>15</option>
+                    <option>20</option>
+                    <option>25</option>
+                </select>
+            </div>
         </div>
-        <div>
-            <h2 class="choices">Select Difficulty</h2>
-            <select id="difficultySelect" class="custom-select">
-                <option>Easy</option>
-                <option>Medium</option>
-                <option>Hard</option>
-            </select>
-        </div>
-        <div>
-            <h2 class="choices">How many questions?</h2>
-            <select id="questionSelect" class="custom-select">
-                <option>10</option>
-                <option>15</option>
-                <option>20</option>
-                <option>25</option>
-            </select>
-        </div>
-        <div>
+        <div class="button-container">
             <button class="btn" onclick="prepareUrl()">Lets go!</button>
         </div>
     </section>
@@ -48,13 +51,13 @@
                 amount.</h1>
             <div id="hud">
                 <div id="hud-item">
-                    <p class="hud-prefix">
+                    <p class="hud-prefix color">
                         Question
                     </p>
-                    <h1 class="hud-main-text" id="questionCounter"></h1>
+                    <h1 class="hud-main-text color" id="questionCounter"></h1>
                 </div>
                 <div id="hud-item">
-                    <p class="hud-prefix">
+                    <p class="hud-prefix color">
                         Score
                     </p>
                     <h1 class="hud-main-text" id="score">
@@ -62,20 +65,20 @@
                     </h1>
                 </div>
             </div>
-            <h2 id="question"></h2>
-            <div class="choice-container">
+            <h2 id="question" class="color"></h2>
+            <div class="choice-container color">
                 <p class="choice-prefix">A</p>
                 <p class="choice-text" data-number="1"></p>
             </div>
-            <div class="choice-container">
+            <div class="choice-container color">
                 <p class="choice-prefix">B</p>
                 <p class="choice-text" data-number="2"></p>
             </div>
-            <div class="choice-container">
+            <div class="choice-container color">
                 <p class="choice-prefix">C</p>
                 <p class="choice-text" data-number="3"></p>
             </div>
-            <div class="choice-container">
+            <div class="choice-container color">
                 <p class="choice-prefix">D</p>
                 <p class="choice-text" data-number="4"></p>
             </div>
@@ -84,7 +87,7 @@
 
     <!-- End Screen -->
     <section id="end" class="container hidden">
-        <div id="finalScore" class="flex-center flex-column"></div>
+        <div id="finalScore" class="flex-center flex-column color"></div>
         <div class="flex-center flex-column">
             <a class="btn" id="restartSame">Play Again</a>
             <a class="btn" id="restartNew">Try a different quiz</a>
