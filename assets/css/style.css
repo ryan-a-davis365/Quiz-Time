@@ -21,10 +21,10 @@ h4 {
 }
 
 h1 {
-    font-size: 5.4rem;
+    font-size: 3rem;
     color: #06a872;
     text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
 }
 
 h1>span {
@@ -33,8 +33,8 @@ h1>span {
 }
 
 h2 {
-    font-size: 4.2rem;
-    margin-bottom: 4rem;
+    font-size: 3rem;
+    margin-bottom: 2rem;
     font-weight: 700;
 }
 
@@ -44,7 +44,7 @@ h3 {
 }
 
 .choices {
-    font-size: 2.2rem;
+    font-size: 3rem;
     padding: 1rem 0;
     width: 100%;
     text-align: center;
@@ -83,14 +83,14 @@ h3 {
 
 .custom-select {
     width: 100%;
-    color: #000000; /* Text color remains black */
-    background-color: rgb(6, 168, 114); /* Change the background color to white so the text is visible */
-    font-size: 1rem;
+    color: #000000;
+    background-color: rgb(6, 168, 114);
+    font-size: 1.5rem;
     font-weight: 400;
-    border: 1px solid #06a872; /* Green border to match theme */
+    border: 1px solid #06a872;
     border-radius: .25rem;
     padding-left: 0.5rem;
-    padding-right: 0.5rem; /* Ensure there's space for the dropdown arrow */
+    padding-right: 0.5rem;
 }
 
 .home {
@@ -227,10 +227,13 @@ h3 {
 
 /* Footer Styling */
 
-footer div{
+footer {
+    margin-top: auto;
     width: 100%;
-    position: fixed;
-    bottom: 0;
+}
+
+footer div{
+    padding: 1rem;
     display: flex;
     justify-content: center;
 }
@@ -334,6 +337,14 @@ body {
     .home {
         gap: 1rem;
     }
+
+    #title {
+        font-size: 3.5rem;
+    }
+
+    .choices {
+        font-size: 2rem;
+    }
 }
 
 /* For tablets (portrait and landscape) */
@@ -380,7 +391,7 @@ body {
 /* For large desktop screens */
 @media (min-width: 1025px) and (max-width: 1440px) {
     body {
-        font-size: 62.5%; /* Reset to base font size */
+        font-size: 62.5%;
     }
 
     .selection-row div {
@@ -407,6 +418,6 @@ body {
     }
 
     .container {
-        max-width: 90rem; /* Increase container width for larger screens */
+        max-width: 90rem;
     }
 }
