@@ -263,7 +263,14 @@ footer div{
 }
 
 /* Loader */
-#loader {
+.loader {
+    display: flex;
+    justify-content: ce;
+}
+
+#loading {
+    display: block;
+    margin: 0 auto;
     border: 1.6rem solid white;
     border-radius: 50%;
     border-top: 1.6rem solid #06a872;

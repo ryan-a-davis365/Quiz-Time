@@ -2,14 +2,13 @@ const question = document.getElementById('question');
 const choices = Array.from(document.getElementsByClassName("choice-text"));
 const questionCounterText = document.getElementById('questionCounter');
 const scoreText = document.getElementById('score');
-const loader = document.getElementById('loader');
+const loader = document.getElementById('loading');
 const game = document.getElementById('game');
 const end = document.getElementById('end');
 const home = document.getElementById('home');
 const questionSelect = document.getElementById('questionSelect');
 const difficultySelect = document.getElementById('difficultySelect');
 const categoryArray = document.getElementById('categorySelect');
-const load = document.getElementById('loading');
 const finalScore = document.getElementById('finalScore');
 
 let currentQuestion = {};
@@ -28,6 +27,7 @@ const CORRECT_BONUS = 1;
  */
 
 function getCategories() {
+  loadingWheel(true);
   fetch('https://opentdb.com/api_category.php')
     .then(response => response.json())
     .then(category => {
@@ -44,6 +44,7 @@ function getCategories() {
         categoryOption.classList.add("category");
         categorySelect.appendChild(categoryOption);
       });
+      loadingWheel(false);
       home.classList.remove("hidden");
     })
     .catch(() => console.error());
@@ -65,6 +66,7 @@ function prepareUrl() {
 }
 
 function getQuestions(url) {
+  loadingWheel(true);
   fetch(url)
     .then((res) => {
       return res.json();
@@ -94,6 +96,7 @@ function getQuestions(url) {
       });
       if (question.length > 0) {
         startGame();
+        loadingWheel(false);
       } else {
         displayErrors();
       }
@@ -114,7 +117,6 @@ function startGame() {
   score = 0;
   availableQuestions = [...questions];
   getNewQuestion();
-  loader.classList.add("hidden");
   game.classList.remove("hidden");
   home.classList.add("hidden");
 };
@@ -126,7 +128,9 @@ function startGame() {
  */
 
 function getNewQuestion() {
+  loadingWheel(true);
   if (availableQuestions.length == 0) {
+    loading
     game.classList.add("hidden");
     end.classList.remove("hidden");
     finalScore.innerHTML = `Congratulations you scored: ${score} / ${selectedNumberOfQuestions}`;
@@ -145,6 +149,7 @@ function getNewQuestion() {
     availableQuestions.splice(questionIndex, 1);
     acceptingAnswers = true;
   };
+  loadingWheel(false);
 }
 
 /**
@@ -180,6 +185,14 @@ choices.forEach((choice) => {
   });
 });
 
+function loadingWheel(loading) {
+  if (loading) {
+    loader.classList.remove("hide");
+  } else {
+    loader.classList.add("hide");
+  }
+}
+
 function displayErrors() {
   restartQuiz.addEventListener('click', () => {
     score = 0;
@@ -187,7 +200,7 @@ function displayErrors() {
     end.classList.add("hidden");
     startGame();
   });
-  
+
   restartNew.addEventListener('click', () => {
     end.classList.add("hidden");
     home.classList.remove("hidden");

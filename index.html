@@ -10,103 +10,111 @@
 </head>
 
 <body>
+
+    <!-- Title -->
     <h1 id="title">Quiz Time</h1>
 
-    <!-- Home Screen -->
-
-    <section id="home" class="container home">
-        <div class="selection-row">
-            <div>
-                <h2 class="choices">Choose a Topic</h2>
-                <select id="categorySelect" class="custom-select">
-                </select>
-            </div>
-            <div>
-                <h2 class="choices">Select Difficulty</h2>
-                <select id="difficultySelect" class="custom-select">
-                    <option>Easy</option>
-                    <option>Medium</option>
-                    <option>Hard</option>
-                </select>
-            </div>
-            <div>
-                <h2 class="choices">How many questions?</h2>
-                <select id="questionSelect" class="custom-select">
-                    <option>10</option>
-                    <option>15</option>
-                    <option>20</option>
-                    <option>25</option>
-                </select>
+    <!-- Loading Wheel -->
+    <div class="container">
+        <div class="loader">
+            <div id="loading" class=""></div>
             </div>
         </div>
-        <div class="button-container">
-            <button class="btn" onclick="prepareUrl()">Lets go!</button>
-        </div>
-    </section>
 
-    <!-- Quiz Screen -->
-    <section id="game" class="container hidden">
-        <div id="loader"></div>
-        <div class="justify-center flex-column">
-            <h1 id="errorState" class="hidden">Error: Not enough questions for this category, please choose a lower
-                amount.</h1>
-            <div id="hud">
-                <div id="hud-item">
-                    <p class="hud-prefix color">
-                        Question
-                    </p>
-                    <h1 class="hud-main-text color" id="questionCounter"></h1>
+        <!-- Home Screen -->
+
+        <section id="home" class="container home">
+            <div class="selection-row">
+                <div>
+                    <h2 class="choices">Choose a Topic</h2>
+                    <select id="categorySelect" class="custom-select">
+                    </select>
                 </div>
-                <div id="hud-item">
-                    <p class="hud-prefix color">
-                        Score
-                    </p>
-                    <h1 class="hud-main-text" id="score">
-                        0
-                    </h1>
+                <div>
+                    <h2 class="choices">Select Difficulty</h2>
+                    <select id="difficultySelect" class="custom-select">
+                        <option>Easy</option>
+                        <option>Medium</option>
+                        <option>Hard</option>
+                    </select>
+                </div>
+                <div>
+                    <h2 class="choices">How many questions?</h2>
+                    <select id="questionSelect" class="custom-select">
+                        <option>10</option>
+                        <option>15</option>
+                        <option>20</option>
+                        <option>25</option>
+                    </select>
                 </div>
             </div>
-            <h2 id="question" class="color"></h2>
-            <div class="choice-container color">
-                <p class="choice-prefix">A</p>
-                <p class="choice-text" data-number="1"></p>
+            <div class="button-container">
+                <button class="btn" onclick="prepareUrl()">Lets go!</button>
             </div>
-            <div class="choice-container color">
-                <p class="choice-prefix">B</p>
-                <p class="choice-text" data-number="2"></p>
+        </section>
+
+        <!-- Quiz Screen -->
+        <section id="game" class="container hidden">
+            <div class="justify-center flex-column">
+                <h1 id="errorState" class="hidden">Error: Not enough questions for this category, please choose a lower
+                    amount.</h1>
+                <div id="hud">
+                    <div id="hud-item">
+                        <p class="hud-prefix color">
+                            Question
+                        </p>
+                        <h1 class="hud-main-text color" id="questionCounter"></h1>
+                    </div>
+                    <div id="hud-item">
+                        <p class="hud-prefix color">
+                            Score
+                        </p>
+                        <h1 class="hud-main-text" id="score">
+                            0
+                        </h1>
+                    </div>
+                </div>
+                <h2 id="question" class="color"></h2>
+                <div class="choice-container color">
+                    <p class="choice-prefix">A</p>
+                    <p class="choice-text" data-number="1"></p>
+                </div>
+                <div class="choice-container color">
+                    <p class="choice-prefix">B</p>
+                    <p class="choice-text" data-number="2"></p>
+                </div>
+                <div class="choice-container color">
+                    <p class="choice-prefix">C</p>
+                    <p class="choice-text" data-number="3"></p>
+                </div>
+                <div class="choice-container color">
+                    <p class="choice-prefix">D</p>
+                    <p class="choice-text" data-number="4"></p>
+                </div>
             </div>
-            <div class="choice-container color">
-                <p class="choice-prefix">C</p>
-                <p class="choice-text" data-number="3"></p>
+        </section>
+
+        <!-- End Screen -->
+        <section id="end" class="container hidden end">
+            <div class="flex-center flex-column color">
+                <h2 id="finalScore"></h2>
             </div>
-            <div class="choice-container color">
-                <p class="choice-prefix">D</p>
-                <p class="choice-text" data-number="4"></p>
+            <div class="flex-center flex-column">
+                <a class="btn" id="restartSame">Play Again</a>
+                <a class="btn" id="restartNew">Try a different quiz</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- End Screen -->
-    <section id="end" class="container hidden end">
-        <div class="flex-center flex-column color">
-            <h2 id="finalScore"></h2>
-        </div>
-        <div class="flex-center flex-column">
-            <a class="btn" id="restartSame">Play Again</a>
-            <a class="btn" id="restartNew">Try a different quiz</a>
-        </div>
-    </section>
-
-    <!--Social media icons-->
-    <footer>
-        <div>
-            <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook icon"></i></a>
-            <a href="https://x.com/?lang=en" target="_blank"><i class="fa-brands fa-twitter icon"></i></a>
-        </div>
-    </footer>
+        <!--Social media icons-->
+        <footer>
+            <div>
+                <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook icon"></i></a>
+                <a href="https://x.com/?lang=en" target="_blank"><i class="fa-brands fa-twitter icon"></i></a>
+            </div>
+        </footer>
 
 
-    <script src="quiz.js"></script>
+        <script src="quiz.js"></script>
 </body>
 
 </html>
