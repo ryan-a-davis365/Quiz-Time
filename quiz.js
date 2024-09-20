@@ -182,13 +182,17 @@ choices.forEach((choice) => {
 
 function displayErrors() {
   restartQuiz.addEventListener('click', () => {
+    score = 0;
+    scoreText.innerHTML = score;
     end.classList.add("hidden");
-    getQuestions();
+    startGame();
   });
   
   restartNew.addEventListener('click', () => {
     end.classList.add("hidden");
     home.classList.remove("hidden");
+    score = 0;
+    scoreText.innerHTML = score;
   })
 }
 
