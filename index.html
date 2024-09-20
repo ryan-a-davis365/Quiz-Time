@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Time</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://kit.fontawesome.com/ebbcf62481.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -13,7 +14,7 @@
 
     <!-- Home Screen -->
 
-    <section id="home" class="container">
+    <section id="home" class="container home">
         <div class="selection-row">
             <div>
                 <h2 class="choices">Choose a Topic</h2>
@@ -86,13 +87,25 @@
     </section>
 
     <!-- End Screen -->
-    <section id="end" class="container hidden">
-        <div id="finalScore" class="flex-center flex-column color"></div>
+    <section id="end" class="container hidden end">
+        <div class="flex-center flex-column color">
+            <h2 id="finalScore"></h2>
+        </div>
         <div class="flex-center flex-column">
             <a class="btn" id="restartSame">Play Again</a>
             <a class="btn" id="restartNew">Try a different quiz</a>
         </div>
     </section>
+
+    <!--Social media icons-->
+    <footer>
+        <div>
+            <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook icon"></i></a>
+            <a href="https://x.com/?lang=en" target="_blank"><i class="fa-brands fa-twitter icon"></i></a>
+        </div>
+    </footer>
+
+
     <script src="quiz.js"></script>
 </body>
 
