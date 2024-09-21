@@ -104,6 +104,10 @@ h3 {
     flex-direction: column;
 }
 
+.errorState {
+    font-size: 2rem;
+}
+
 /* Flexbox styling */
 
 .container {

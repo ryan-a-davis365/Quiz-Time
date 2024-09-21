@@ -10,6 +10,7 @@ const questionSelect = document.getElementById('questionSelect');
 const difficultySelect = document.getElementById('difficultySelect');
 const categoryArray = document.getElementById('categorySelect');
 const finalScore = document.getElementById('finalScore');
+const errorState = document.getElementById('errorState');
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -78,8 +79,10 @@ function getQuestions(url) {
     })
     .then((loadedQuestions) => {
       if (loadedQuestions.results.length <= 0) {
-        errorState.classList.remove('hidden');
+        displayErrors("Error: No questions available for the selected category and difficulty. Please try again with a different selection.");
+        return;
       }
+
       questions = loadedQuestions.results.map((loadedQuestion) => {
         const formattedQuestion = {
           question: loadedQuestion.question
@@ -99,19 +102,22 @@ function getQuestions(url) {
 
         return formattedQuestion;
       });
-      if (question.length > 0) {
+
+      if (questions.length > 0) {
         startGame();
-        loadingWheel(false);
       } else {
-        displayErrors();
+        displayErrors("Error: No questions were loaded. Please try again.");
       }
     })
     .catch((err) => {
       console.error(err);
-      displayErrors();
+      displayErrors("Error: Failed to load questions due to spamming 'Start Game'");
     })
-    .finally(() => startGame());
+    .finally(() => {
+      loadingWheel(false);
+    });
 }
+
 
 /**
  * Starts the game
@@ -122,6 +128,7 @@ function startGame() {
   score = 0;
   availableQuestions = [...questions];
   getNewQuestion();
+  addRestartListeners();
   game.classList.remove("hidden");
 }
 
@@ -195,14 +202,12 @@ choices.forEach((choice) => {
 function loadingWheel(loading) {
   if (loading) {
     loader.classList.remove("hidden");
-    console.log("unhidden");
   } else {
     loader.classList.add("hidden");
-    console.log("hidden");
   }
 }
 
-function displayErrors() {
+function addRestartListeners() {
   restartQuiz.addEventListener('click', () => {
     score = 0;
     scoreText.innerHTML = score;
@@ -215,7 +220,13 @@ function displayErrors() {
     home.classList.remove("hidden");
     score = 0;
     scoreText.innerHTML = score;
-  })
-};
+  });
+}
+
+function displayErrors(errorMessage) {
+  const errorElement = document.getElementById('errorState');
+  errorElement.innerHTML = errorMessage;
+  errorElement.classList.remove('hidden');
+}
 
 getCategories();
