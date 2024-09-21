@@ -65,6 +65,10 @@ function prepareUrl() {
   getQuestions(url);
 }
 
+/**
+ * Retrieves Quiz data, sorts the data and passes to the DOM
+ */
+
 function getQuestions(url) {
   loadingWheel(true);
   fetch(url)
@@ -184,6 +188,10 @@ choices.forEach((choice) => {
     }, 1000);
   });
 });
+
+/**
+ * Shows/hides the loading wheel
+ */
 
 function loadingWheel(loading) {
   if (loading) {
