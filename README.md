@@ -158,3 +158,142 @@ As this project is the most complex thing i have worked on, i wanted to ensure t
 
 * Initially when i was planning i was going to add every question and correct answer individually until i came across the use of API which i found much easier to use and also sped up my progress. Due to the use of API i then decided to take full advantage of it and use the options for categories, difficulty and amount of questions.
 
+---
+
+## Overall:
+
+### Responsiveness -
+I spent a great amount of time making sure that my site was easily accesible and understandable on a multitude of different devices such as, a computer screen, an ipad, a small tablet, a regulared sized phone, and a small phone. I done this by making sure everything was easy to read and laid out in a manner that was easy to navigate, regardless what device the user is on.
+
+### Design -
+The main aim of my site was to use a simple but aesthetically pleasing colour pallet to help the site feel welcoming and easy to use. When choosing a colour pallet i used [contrast-ration.com](https://contrast-ratio.com/) to ensure my choices are eligible and easy to read.
+
+### Features -
+
+#### Self Populating Category List
+
+##### Plan: 
+Initially when i was planning i wasnt going to use an API, but when i discovered what they were and how i could use them i realised the wide variety of categories the API i had found had and wanted the category option to be self-populating by the API due to the creator of the API adding more categories.
+
+##### Implementation:
+When researching the API documentation, i found the site offered their categories list as a separate API. When loading the site, i used the fetch API to obtain this list which is then sorted and passed across to the DOM.
+
+##### Result:
+The categories list drop down operates as expected, populating the API data to the DOM allowing the user to select their chosen category and using that information for what questions are pulled from the API.
+
+***
+
+#### Fully Playable Quiz
+
+##### Plan:
+The main aim of the project was to have a fully playable quiz where the questions that were displayed were entirely depicted from the choices provided by the user, sourced from an external API which is constantly being updated.
+
+##### Implementation:
+While reviewing the API documentation, I set up a variable to store the base URL needed to fetch the data. I then completed the URL using the user's selections. Once these variables were established, I used the Fetch API to retrieve the data, convert it to JSON, and applied the .map() function to make the data usable. I then placed the answers into an array and randomized their order to ensure that when the question is accessed again during the playthrough, the answers are displayed in a different order each time.
+
+##### Result:
+The quiz operates as planned, the user is given the chosen quiz in full working order without any bugs.
+
+***
+
+#### End Of Game Options
+
+##### Plan:
+At the end of the game the aim was to provide the user with the choice to play the game again with the same choices or to go back to the start to choose a new category,difficulty or amount of questions.
+
+##### Implementation:
+When creating the results page i decided the best approach would be to give the user two buttons, one to restart the exact same quiz, the other to go back to the start of the game and offer the choices again.
+
+##### Result:
+This worked as expected with little effort.
+
+***
+
+### Issues and resolutions
+During development of this project i encountered a wide range of bugs which slowed down progress, below are examples of the larger bugs and the fixes.
+
+##### Bug:
+Div's not being hidden when intented to.
+
+##### Fix:
+To fix this i reviewed my code and tried to logically read through it all to make sure i was implementing the "classList" at the correct places in the code.
+
+##### Result:
+This fixed the issue and allowed Div's to be hidden or unhidden when they needed to be.
+
+***
+
+##### Bug:
+Functions not working as expected due to them being undefined.
+
+##### Fix:
+This was due to me defining variables inside of a function which then meant they could not be used in other functions. I fixed this by defining them at the top of my quiz.js page.
+
+##### Result:
+When this was changed the functions would work correctly and i would no longer get the undefined error.
+
+***
+
+##### Bug
+The div with the id of "end" was not working.
+
+##### Fix
+To fix this i discovered that i did not have the script src="quiz.js" at the end of my html, under the div with the end of "end".
+
+##### Result
+The div was working as intended.
+
+***
+
+##### Bug
+Categories with less than requested questions returned with nothing.
+
+##### Fix
+When i looked into this i discovered that when a category did not have enough questions to provide the user with the amount they chose no questions would load at all. I fixed this by adding an if statement to declare if there is any data within the array, if there isnt then an error message telling the user "Error: No questions available for the selected category and difficulty. Please try again with a different selection." would display.
+
+##### Result
+I don't feel this is the perfect solution to the issue but ensures the game still works as expected.
+
+***
+
+##### Bug
+Loading wheel would not display correctly, instead of displaying before a div would be unhidden it would display at the top of the screen.
+
+##### Fix
+After investigating i realised that i had placed the classes and Id's into the wrong divs. By moving them into the correct one it would then work.
+
+##### Result
+The loading wheel would now display before a div is unhidden making for a smooth experience.
+
+## Deployment
+
+To deploy this page to GitHub Pages from its [GitHub repository](https://github.com/ryan-a-davis365/Quiz-Time), the following steps were taken: 
+
+1. From the menu items near the top of the page, select **Settings**.
+2. Scroll down to the **GitHub Pages** section.
+3. Under **Source** click the drop-down menu labelled **None** and select **Master Branch**
+4. On selecting Master Branch the page is automatically refreshed, the website is now deployed. 
+5. Scroll back down to the **GitHub Pages** section to retrieve the link to the deployed website.
+
+## Credits
+
+### Content
+
+* API data source from [opentdb](https://opentdb.com/)
+* The favicon was edited by me. The original: (https://static.vecteezy.com/system/resources/previews/016/062/449/original/quiz-logo-icon-symbol-cartoon-yellow-bubble-speech-vector.jpg)
+* Loader based on W3 schools lesson [w3schools](https://www.w3schools.com/howto/howto_css_loader.asp)
+* Icons in the footer were taken from Font Awesome.
+* All content was written by myself but with the help from some of the Love Maths code...........
+
+### Acknowledgements
+
+Richard Wells (mentor) - He went above and beyond and helped me massively with understanding javascript and helping me to think logically and fix my errors.
+
+Ellis Fraser (friend) - He went out of his way multiple times to give my code a read through and tell me roughly where i had gone wrong, couldnt of completed this without his help.
+
+My family - They have motivated me and pushed me to keep going, even when i am struggling.
+
+My girlfriend - For constantly being supportive of me and giving me the time and space to complete this project.
+
+## Disclaimer
+Please note the content and images on this website are for educational purposes only.
