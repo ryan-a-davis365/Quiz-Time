@@ -17,9 +17,9 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 let questions = [];
-let selectedNumberOfQuestions
-let restartQuiz = document.getElementById("restartSame")
-let restartNew = document.getElementById("restartNew")
+let selectedNumberOfQuestions;
+let restartQuiz = document.getElementById("restartSame");
+let restartNew = document.getElementById("restartNew");
 const CORRECT_BONUS = 1;
 
 /**
@@ -61,7 +61,7 @@ function prepareUrl() {
     questionSelect.options[questionSelect.selectedIndex].text
   );
 
-  const url = `https://opentdb.com/api.php?amount=${selectedNumberOfQuestions}&type=multiple&category=${categoryId}&difficulty=${difficulty}`
+  const url = `https://opentdb.com/api.php?amount=${selectedNumberOfQuestions}&type=multiple&category=${categoryId}&difficulty=${difficulty}`;
   getQuestions(url);
 }
 
@@ -123,7 +123,7 @@ function startGame() {
   availableQuestions = [...questions];
   getNewQuestion();
   game.classList.remove("hidden");
-};
+}
 
 /**
  * Gets the next question if one is available
@@ -134,7 +134,6 @@ function startGame() {
 function getNewQuestion() {
   loadingWheel(true);
   if (availableQuestions.length == 0) {
-    loading
     game.classList.add("hidden");
     end.classList.remove("hidden");
     finalScore.innerHTML = `Congratulations you scored: ${score} / ${selectedNumberOfQuestions}`;
@@ -153,7 +152,7 @@ function getNewQuestion() {
     availableQuestions.splice(questionIndex, 1);
     acceptingAnswers = true;
   };
-  loadingWheel(false);
+  loadingWheel(false)
 }
 
 /**
@@ -217,6 +216,6 @@ function displayErrors() {
     score = 0;
     scoreText.innerHTML = score;
   })
-}
+};
 
 getCategories();
