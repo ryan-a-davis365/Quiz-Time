@@ -70,6 +70,7 @@ function prepareUrl() {
  */
 
 function getQuestions(url) {
+  home.classList.add("hidden");
   loadingWheel(true);
   fetch(url)
     .then((res) => {
@@ -122,7 +123,6 @@ function startGame() {
   availableQuestions = [...questions];
   getNewQuestion();
   game.classList.remove("hidden");
-  home.classList.add("hidden");
 };
 
 /**
@@ -195,9 +195,11 @@ choices.forEach((choice) => {
 
 function loadingWheel(loading) {
   if (loading) {
-    loader.classList.remove("hide");
+    loader.classList.remove("hidden");
+    console.log("unhidden");
   } else {
-    loader.classList.add("hide");
+    loader.classList.add("hidden");
+    console.log("hidden");
   }
 }
 

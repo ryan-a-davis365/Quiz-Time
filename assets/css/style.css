@@ -145,7 +145,7 @@ h3 {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 #title {
@@ -265,10 +265,10 @@ footer div{
 /* Loader */
 .loader {
     display: flex;
-    justify-content: ce;
+    justify-content: center;
 }
 
-#loading {
+.loader div {
     display: block;
     margin: 0 auto;
     border: 1.6rem solid white;
