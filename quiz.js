@@ -13,7 +13,7 @@ const finalScore = document.getElementById('finalScore');
 const errorState = document.getElementById('errorState');
 const startButton = document.getElementById('startQuiz');
 const errorRetry = document.getElementById('errorRetry');
-const errorButton = document.getElementById('errorButton')
+const errorButton = document.getElementById('errorButton');
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -168,8 +168,8 @@ function getNewQuestion() {
 
     availableQuestions.splice(questionIndex, 1);
     acceptingAnswers = true;
-  };
-  loadingWheel(false)
+  }
+  loadingWheel(false);
 }
 
 /**
