@@ -23,6 +23,8 @@ Welcome to Quiz Time, the ultimate quiz platform! Here you can customize your qu
 * Testing
     * Issues and Resolutions
 * Overall
+    * Design
+* Validators
 * Deployment
 * Credits
 * Acknowledgements
@@ -56,15 +58,15 @@ With regards to other sites online, this site ideally needs to be
 
 1. As a user i want the site to be easy to navigate with a simplistic yet colourful design
 2. As a user i want to be able to choose what questions i am given
-3. As a user i want to be able to select how hard the questions are so any any range can play it
+3. As a user i want to be able to select how hard the questions are so any age range can play it
 4. As a user i want to be challenged!
-5. As a user i want to come back and know i'm getting new questions not the same quiz over and over.
+5. As a user i want to come back and know i'm getting new questions, not the same quiz over and over.
 
 ### Designer goals 
 
 1. Create a simple but engaging quiz game
 2. Minimise the need for constant updates by using API for data
-3. Be engaging enough to make users want to come back after intial use.
+3. Be engaging enough to make users want to come back after initial use.
 
 ### Design Choices
 
@@ -122,7 +124,7 @@ The user is then provided with the quiz screen that portrays the question and th
 
 ### Correct/Incorrect Indication
 
-When the user selects an answer they are presented with either a green background or a red background on the answer they picked to indicate if they were correct or incorrect.
+When the user selects an answer they are presented with either a green or red background on the answer they picked to indicate if they were correct or incorrect.
 
 ![Correct Indication](assets/images/correct-indication.png)
 ![Incorrect Indication](assets/images/incorrect-indication.png)
@@ -157,7 +159,7 @@ The other one being the "Try a different quiz" button, this button will take you
 
 ### Footer
 
-The bottom of the screen is where the social icons are displayed at all times, this is so you have constant access to the social media pages of the website
+The bottom of the screen is where the social icons are displayed at all times, this is so you have constant access to the social media pages of the website.
 
 ![Footer](assets/images/footer.png)
 
@@ -198,11 +200,11 @@ website preview
 
 ## Testing
 
-As this was my first time developing with the use of JavaScript and an external API to receive the quiz data from i ensured i was extremely thorough with testing to ensure that every function ran correctly and data was provide to the DOM correctly without any issues. By being thorough with all my testing it has greatly improved my understanding of JavaScript.
+As this was my first time developing with the use of JavaScript and an external API to receive the quiz data from i ensured i was extremely thorough with testing to ensure that every function ran correctly and data was provided to the DOM correctly without any issues. By being thorough with all my testing it has greatly improved my understanding of JavaScript.
 
 #### Test Planning
 
-As this project is the most complex thing i have worked on, i wanted to ensure that a methodical approach was taken with constant feature testing throughout development. In it's initial state i created dummy html items to ensure data was being passed and displayed correctly and as expected. In future projects i will look to using more automated testing to aid me in my development. 
+As this project is the most complex thing i have worked on, i wanted to ensure that a methodical approach was taken with constant feature testing throughout development. In it's initial state i created my html items to ensure data was being passed and displayed correctly and as expected. In future projects i will look to using more automated testing to aid me in my development because i believe there was better methods i could of used.
 
 #### Testing Stories
 
@@ -241,7 +243,7 @@ When this was changed the functions would work correctly and i would no longer g
 The div with the id of "end" was not working.
 
 ##### Fix
-To fix this i discovered that i did not have the script src="quiz.js" at the end of my html, under the div with the end of "end".
+To fix this i discovered that i did not have the script src="quiz.js" at the end of my html, under the section with the ID of "end".
 
 ##### Result
 The div was working as intended.
@@ -263,7 +265,7 @@ I don't feel this is the perfect solution to the issue but ensures the game stil
 Loading wheel would not display correctly, instead of displaying before a div would be unhidden it would display at the top of the screen.
 
 ##### Fix
-After investigating i realised that i had placed the classes and Id's into the wrong divs. By moving them into the correct one it would then work.
+After investigating i realised that i had placed the classes and Id's into the wrong divs. By moving them into the correct ones it would then work.
 
 ##### Result
 The loading wheel would now display before a div is unhidden making for a smooth experience.
@@ -272,7 +274,7 @@ The loading wheel would now display before a div is unhidden making for a smooth
 ## Overall:
 
 ### Responsiveness -
-I spent a great amount of time making sure that my site was easily accesible and understandable on a multitude of different devices such as, a computer screen, an ipad, a small tablet, a regulared sized phone, and a small phone. I done this by making sure everything was easy to read and laid out in a manner that was easy to navigate, regardless what device the user is on.
+I spent a great amount of time making sure that my site was easily accessible and understandable on a multitude of different devices such as, a computer screen, an ipad, a small tablet, a regulared sized phone, and a small phone. I done this by making sure everything was easy to read and laid out in a manner that was easy to navigate, regardless what device the user is on.
 
 ### Lighthouse Score -
 Desktop
@@ -320,7 +322,7 @@ The quiz operates as planned, the user is given the chosen quiz in full working 
 At the end of the game the aim was to provide the user with the choice to play the game again with the same choices or to go back to the start to choose a new category,difficulty or amount of questions.
 
 ##### Implementation:
-When creating the results page i decided the best approach would be to give the user two buttons, one to restart the exact same quiz, the other to go back to the start of the game and offer the choices again.
+When creating the results page i decided the best approach would be to give the user two buttons, one to restart the exact same quiz, the other to go back to the home page and offer the choices again.
 
 ##### Result:
 This worked as expected with little effort.
