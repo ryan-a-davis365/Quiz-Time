@@ -93,17 +93,9 @@ After discussing various colour combinations with potential users of this site a
 
 The primary feature of this site is to provide a quiz application to users that will allow the users input on the type of quiz they complete. Explained more down below.
 
-### Select a topic
+### Select a Category, Difficulty and Number of questions
 
-The user is given the option to choose what topic of quiz they would like to complete.
-
-### Select Difficulty
-
-For younger users or for extremely smart users, they are offered a difficulty option ranging from Easy, Medium or Hard.
-
-### Select Number Of Questions
-
-Depending on if users would like a long quiz or a short quiz they are given the option from 10 to 25 questions to decide from.
+The user is given the option to choose what topic of quiz they would like to complete. For younger users or for extremely smart users, they are offered a difficulty option ranging from Easy, Medium or Hard. Depending on if users would like a long quiz or a short quiz they are given the option from 10 to 25 questions to decide from.
 
 ### Correct/Incorrect Indication
 
