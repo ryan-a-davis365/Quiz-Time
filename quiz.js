@@ -11,7 +11,9 @@ const difficultySelect = document.getElementById('difficultySelect');
 const categorySelect = document.getElementById('categorySelect');
 const finalScore = document.getElementById('finalScore');
 const errorState = document.getElementById('errorState');
-const startButton = document.getElementById('startQuiz')
+const startButton = document.getElementById('startQuiz');
+const errorRetry = document.getElementById('errorRetry');
+const errorButton = document.getElementById('errorButton')
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -86,7 +88,7 @@ function getQuestions(url) {
     .then((loadedQuestions) => {
       if (loadedQuestions.results.length <= 0) {
         displayErrors("Error: No questions available for the selected category and difficulty. Please try again with a different selection.");
-        return;
+        addRestartListeners();
       }
 
       questions = loadedQuestions.results.map((loadedQuestion) => {
@@ -113,11 +115,13 @@ function getQuestions(url) {
         startGame();
       } else {
         displayErrors("Error: No questions were loaded. Please try again.");
+        addRestartListeners();
       }
     })
     .catch((err) => {
       console.error(err);
       displayErrors("Error: Failed to load questions due to spamming 'Start Game'");
+      addRestartListeners();
     })
     .finally(() => {
       loadingWheel(false);
@@ -227,11 +231,18 @@ function addRestartListeners() {
     score = 0;
     scoreText.innerHTML = score;
   });
+
+  errorRetry.addEventListener('click', () => {
+    errorState.classList.add('hidden');
+    errorButton.classList.add('hidden');
+    home.classList.remove('hidden');
+  });
 }
 
 function displayErrors(errorMessage) {
   errorState.innerHTML = errorMessage;
   errorState.classList.remove('hidden');
+  errorButton.classList.remove('hidden');
 }
 
 startButton.addEventListener ('click', () => {
