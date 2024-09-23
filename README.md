@@ -327,11 +327,27 @@ The loading wheel would now display before a div is unhidden making for a smooth
 
 ### Validators
 
-HTML - [W3C](https://validator.w3.org/#validate_by_input+with_options)
+#### HTML - [W3C](https://validator.w3.org/#validate_by_input+with_options)
 
 These IDs were added to improve my lighthouse score, and also so they can be read by assistive technology.
 
 ![Duplicate ID](assets/images/duplicate-id.png)
+
+I received a warning for a few empty headings but this is due to my javascript adding the text to it during the quiz.
+
+![Empty Heading](assets/images/empty-headings.png)
+
+I also received a warning for using a h1, the only reason i used this is for the styling purposes.
+
+![H1 Warning](assets/images/h1-warning.png)
+
+#### CSS - [W3C](https://jigsaw.w3.org/css-validator/)
+
+![CSS Validation](assets/images/w3c-css.png)
+
+#### JS Hint - [JS Hint](assets/images/jshint.png)
+
+![JS Hint](assets/images/jshint.png)
 
 
 
