@@ -214,6 +214,15 @@ As this project is the most complex thing i have worked on, i wanted to ensure t
 ### Responsiveness -
 I spent a great amount of time making sure that my site was easily accesible and understandable on a multitude of different devices such as, a computer screen, an ipad, a small tablet, a regulared sized phone, and a small phone. I done this by making sure everything was easy to read and laid out in a manner that was easy to navigate, regardless what device the user is on.
 
+### Lighthouse Score -
+Desktop
+
+![Desktop Score](assets/images/desktop-lighthouse.png)
+
+Mobile
+
+![Mobile Score](assets/images/mobile-lighthouse.png)
+
 ### Design -
 The main aim of my site was to use a simple but aesthetically pleasing colour pallet to help the site feel welcoming and easy to use. When choosing a colour pallet i used [contrast-ration.com](https://contrast-ratio.com/) to ensure my choices are eligible and easy to read.
 
@@ -315,6 +324,16 @@ After investigating i realised that i had placed the classes and Id's into the w
 
 ##### Result
 The loading wheel would now display before a div is unhidden making for a smooth experience.
+
+### Validators
+
+HTML - [W3C](https://validator.w3.org/#validate_by_input+with_options)
+
+These IDs were added to improve my lighthouse score, and also so they can be read by assistive technology.
+
+![Duplicate ID](assets/images/duplicate-id.png)
+
+
 
 ## Deployment
 
