@@ -8,7 +8,7 @@ const end = document.getElementById('end');
 const home = document.getElementById('home');
 const questionSelect = document.getElementById('questionSelect');
 const difficultySelect = document.getElementById('difficultySelect');
-const categoryArray = document.getElementById('categorySelect');
+const categorySelect = document.getElementById('categorySelect');
 const finalScore = document.getElementById('finalScore');
 const errorState = document.getElementById('errorState');
 
