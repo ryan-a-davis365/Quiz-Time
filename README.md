@@ -93,13 +93,70 @@ After discussing various colour combinations with potential users of this site a
 
 The primary feature of this site is to provide a quiz application to users that will allow the users input on the type of quiz they complete. Explained more down below.
 
+### Title
+
+The user is given a clear indication as to what site they are on.
+
+![Title](assets/images/title.png)
+
 ### Select a Category, Difficulty and Number of questions
 
 The user is given the option to choose what topic of quiz they would like to complete. For younger users or for extremely smart users, they are offered a difficulty option ranging from Easy, Medium or Hard. Depending on if users would like a long quiz or a short quiz they are given the option from 10 to 25 questions to decide from.
 
+![Home Screen](assets/images/topics.png)
+
+### Start button
+
+The user is given a button to begin the quiz with the options they have selected. This button hides the home screen by adding the "hidden" class and removes the quiz screen by removing the "hidden" class.
+
+![Start Button](assets/images/lets-go-button.png)
+
+### Quiz screen
+
+The user is then provided with the quiz screen that portrays the question and the answers.
+
+![Quiz Screen](assets/images/quiz-screen.png)
+
 ### Correct/Incorrect Indication
 
 When the user selects an answer they are presented with either a green background or a red background on the answer they picked to indicate if they were correct or incorrect.
+
+![Correct Indication](assets/images/correct-indication.png)
+![Incorrect Indication](assets/images/incorrect-indication.png)
+
+### Question Counter
+
+During the quiz the user can see how many questions he has completed and how many he has left which updates automatically during the quiz.
+
+![Question Counter](assets/images/question-counter.png)
+
+### Score Counter
+
+The user is also provided with his current score during the quiz which also updates automatically.
+
+![Score Counter](assets/images/score-counter.png)
+
+### Final Score
+
+When the user completes the quiz they are presented with their final score.
+
+![Final Score](assets/images/end-score.png)
+
+### End screen buttons
+
+The user is also presented with two buttons, one of them being the "Play Again" button which will restart the exact same quiz they just completed so they have a chance to better their score.
+
+![Play Again Button](assets/images/play-again-button.png)
+
+The other one being the "Try a different quiz" button, this button will take you back to the home page where you can choose different options to try a different quiz.
+
+![Different Quiz Button](assets/images/try-a-different-quiz-button.png)
+
+### Footer
+
+The bottom of the screen is where the social icons are displayed at all times, this is so you have constant access to the social media pages of the website
+
+![Footer](assets/images/footer.png)
 
 ### Full Playable Quiz To Users Choice
 
@@ -159,6 +216,8 @@ I spent a great amount of time making sure that my site was easily accesible and
 
 ### Design -
 The main aim of my site was to use a simple but aesthetically pleasing colour pallet to help the site feel welcoming and easy to use. When choosing a colour pallet i used [contrast-ration.com](https://contrast-ratio.com/) to ensure my choices are eligible and easy to read.
+
+![Contrast Ratio](assets/images/colour-contrast.png)
 
 ### Features -
 
@@ -275,7 +334,8 @@ To deploy this page to GitHub Pages from its [GitHub repository](https://github.
 * The favicon was edited by me. The original: (https://static.vecteezy.com/system/resources/previews/016/062/449/original/quiz-logo-icon-symbol-cartoon-yellow-bubble-speech-vector.jpg)
 * Loader based on W3 schools lesson [w3schools](https://www.w3schools.com/howto/howto_css_loader.asp)
 * Icons in the footer were taken from Font Awesome.
-* All content was written by myself but with the help from some of the Love Maths code...........
+* All content was written by myself but with the help from some of the Love Maths code
+* I also used a tutorial to get me started, the further i got into the project the more i swayed away from the tutorial due to my understanding of javascript greatly improving [tutorial](https://www.youtube.com/playlist?list=PLB6wlEeCDJ5Yyh6P2N6Q_9JijB6v4UejF)
 
 ### Acknowledgements
 

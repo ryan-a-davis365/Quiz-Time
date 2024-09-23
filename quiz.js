@@ -246,7 +246,7 @@ function displayErrors(errorMessage) {
 }
 
 startButton.addEventListener ('click', () => {
-  prepareUrl()
+  prepareUrl();
   });
 
 getCategories();
