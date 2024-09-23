@@ -11,6 +11,7 @@ const difficultySelect = document.getElementById('difficultySelect');
 const categorySelect = document.getElementById('categorySelect');
 const finalScore = document.getElementById('finalScore');
 const errorState = document.getElementById('errorState');
+const startButton = document.getElementById('startQuiz')
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -228,5 +229,9 @@ function displayErrors(errorMessage) {
   errorElement.innerHTML = errorMessage;
   errorElement.classList.remove('hidden');
 }
+
+startButton.addEventListener ('click', () => {
+  prepareUrl()
+  });
 
 getCategories();
