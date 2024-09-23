@@ -1,4 +1,7 @@
 # Quiz Time
+
+Welcome to Quiz Time, the ultimate quiz platform! Here you can customize your quiz experience by choosing the difficulty level, picking your category, and deciding how many questions you want to challenge yourself with. Whether you're a trivia expert or just looking for some fun, Quiz time lets you create the perfect quiz to match your style. The website is easy to use, pleasant to the eye with the simplistic colour scheme it has been given and a blast to use when trying to test yourself and further your knowledge.
+
 ![Am i responsive](assets/images/am-i-responsive.png)
 
 ---
@@ -13,13 +16,13 @@
     * Design Choices
         * Fonts
         * Colours       
-* Wireframes
+* Wireframe Mockup
 * Features
 * Future Goals
 * Technology Used
 * Testing
     * Issues and Resolutions
-* Known Bugs
+* Overall
 * Deployment
 * Credits
 * Acknowledgements
@@ -209,66 +212,6 @@ As this project is the most complex thing i have worked on, i wanted to ensure t
 
 ---
 
-## Overall:
-
-### Responsiveness -
-I spent a great amount of time making sure that my site was easily accesible and understandable on a multitude of different devices such as, a computer screen, an ipad, a small tablet, a regulared sized phone, and a small phone. I done this by making sure everything was easy to read and laid out in a manner that was easy to navigate, regardless what device the user is on.
-
-### Lighthouse Score -
-Desktop
-
-![Desktop Score](assets/images/desktop-lighthouse.png)
-
-Mobile
-
-![Mobile Score](assets/images/mobile-lighthouse.png)
-
-### Design -
-The main aim of my site was to use a simple but aesthetically pleasing colour pallet to help the site feel welcoming and easy to use. When choosing a colour pallet i used [contrast-ration.com](https://contrast-ratio.com/) to ensure my choices are eligible and easy to read.
-
-![Contrast Ratio](assets/images/colour-contrast.png)
-
-### Features -
-
-#### Self Populating Category List
-
-##### Plan: 
-Initially when i was planning i wasnt going to use an API, but when i discovered what they were and how i could use them i realised the wide variety of categories the API i had found had and wanted the category option to be self-populating by the API due to the creator of the API adding more categories.
-
-##### Implementation:
-When researching the API documentation, i found the site offered their categories list as a separate API. When loading the site, i used the fetch API to obtain this list which is then sorted and passed across to the DOM.
-
-##### Result:
-The categories list drop down operates as expected, populating the API data to the DOM allowing the user to select their chosen category and using that information for what questions are pulled from the API.
-
-***
-
-#### Fully Playable Quiz
-
-##### Plan:
-The main aim of the project was to have a fully playable quiz where the questions that were displayed were entirely depicted from the choices provided by the user, sourced from an external API which is constantly being updated.
-
-##### Implementation:
-While reviewing the API documentation, I set up a variable to store the base URL needed to fetch the data. I then completed the URL using the user's selections. Once these variables were established, I used the Fetch API to retrieve the data, convert it to JSON, and applied the .map() function to make the data usable. I then placed the answers into an array and randomized their order to ensure that when the question is accessed again during the playthrough, the answers are displayed in a different order each time.
-
-##### Result:
-The quiz operates as planned, the user is given the chosen quiz in full working order without any bugs.
-
-***
-
-#### End Of Game Options
-
-##### Plan:
-At the end of the game the aim was to provide the user with the choice to play the game again with the same choices or to go back to the start to choose a new category,difficulty or amount of questions.
-
-##### Implementation:
-When creating the results page i decided the best approach would be to give the user two buttons, one to restart the exact same quiz, the other to go back to the start of the game and offer the choices again.
-
-##### Result:
-This worked as expected with little effort.
-
-***
-
 ### Issues and resolutions
 During development of this project i encountered a wide range of bugs which slowed down progress, below are examples of the larger bugs and the fixes.
 
@@ -324,6 +267,67 @@ After investigating i realised that i had placed the classes and Id's into the w
 
 ##### Result
 The loading wheel would now display before a div is unhidden making for a smooth experience.
+
+
+## Overall:
+
+### Responsiveness -
+I spent a great amount of time making sure that my site was easily accesible and understandable on a multitude of different devices such as, a computer screen, an ipad, a small tablet, a regulared sized phone, and a small phone. I done this by making sure everything was easy to read and laid out in a manner that was easy to navigate, regardless what device the user is on.
+
+### Lighthouse Score -
+Desktop
+
+![Desktop Score](assets/images/desktop-lighthouse.png)
+
+Mobile
+
+![Mobile Score](assets/images/mobile-lighthouse.png)
+
+### Design -
+The main aim of my site was to use a simple but aesthetically pleasing colour pallet to help the site feel welcoming and easy to use. When choosing a colour pallet i used [contrast-ration.com](https://contrast-ratio.com/) to ensure my choices are eligible and easy to read.
+
+![Contrast Ratio](assets/images/colour-contrast.png)
+
+#### Self Populating Category List
+
+##### Plan: 
+Initially when i was planning i wasnt going to use an API, but when i discovered what they were and how i could use them i realised the wide variety of categories the API i had found had and wanted the category option to be self-populating by the API due to the creator of the API adding more categories.
+
+##### Implementation:
+When researching the API documentation, i found the site offered their categories list as a separate API. When loading the site, i used the fetch API to obtain this list which is then sorted and passed across to the DOM.
+
+##### Result:
+The categories list drop down operates as expected, populating the API data to the DOM allowing the user to select their chosen category and using that information for what questions are pulled from the API.
+
+***
+
+#### Fully Playable Quiz
+
+##### Plan:
+The main aim of the project was to have a fully playable quiz where the questions that were displayed were entirely depicted from the choices provided by the user, sourced from an external API which is constantly being updated.
+
+##### Implementation:
+While reviewing the API documentation, I set up a variable to store the base URL needed to fetch the data. I then completed the URL using the user's selections. Once these variables were established, I used the Fetch API to retrieve the data, convert it to JSON, and applied the .map() function to make the data usable. I then placed the answers into an array and randomized their order to ensure that when the question is accessed again during the playthrough, the answers are displayed in a different order each time.
+
+##### Result:
+The quiz operates as planned, the user is given the chosen quiz in full working order without any bugs.
+
+***
+
+#### End Of Game Options
+
+##### Plan:
+At the end of the game the aim was to provide the user with the choice to play the game again with the same choices or to go back to the start to choose a new category,difficulty or amount of questions.
+
+##### Implementation:
+When creating the results page i decided the best approach would be to give the user two buttons, one to restart the exact same quiz, the other to go back to the start of the game and offer the choices again.
+
+##### Result:
+This worked as expected with little effort.
+
+***
+
+
 
 ### Validators
 
