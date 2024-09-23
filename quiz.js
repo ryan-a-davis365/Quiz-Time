@@ -225,9 +225,8 @@ function addRestartListeners() {
 }
 
 function displayErrors(errorMessage) {
-  const errorElement = document.getElementById('errorState');
-  errorElement.innerHTML = errorMessage;
-  errorElement.classList.remove('hidden');
+  errorState.innerHTML = errorMessage;
+  errorState.classList.remove('hidden');
 }
 
 startButton.addEventListener ('click', () => {
