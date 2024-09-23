@@ -109,6 +109,11 @@ h3 {
     font-size: 2rem;
 }
 
+.autoheight {
+    height: auto !important;
+    padding: 1rem !important;
+}
+
 /* Flexbox styling */
 
 .container {
