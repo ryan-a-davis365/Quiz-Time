@@ -217,6 +217,13 @@ function loadingWheel(loading) {
   }
 }
 
+/**
+ * Makes the end screen buttons work.
+ * restartQuiz restarts the same quiz
+ * restartNew takes you back to the home page to choose different options
+ * errorRetry takes you back to the home page, only displays if an error is displayed
+ */
+
 function addRestartListeners() {
   restartQuiz.addEventListener('click', () => {
     score = 0;
@@ -245,6 +252,9 @@ function displayErrors(errorMessage) {
   errorButton.classList.remove('hidden');
 }
 
+/**
+ * Makes the "Let's go" button start the quiz.
+ */
 startButton.addEventListener ('click', () => {
   prepareUrl();
   });
