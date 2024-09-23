@@ -63,6 +63,11 @@ function prepareUrl() {
     questionSelect.options[questionSelect.selectedIndex].text
   );
 
+  if (selectedNumberOfQuestions > 25) {
+    selectedNumberOfQuestions = 25;
+  } else if (selectedNumberOfQuestions < 10)
+    selectedNumberOfQuestions = 10;
+
   const url = `https://opentdb.com/api.php?amount=${selectedNumberOfQuestions}&type=multiple&category=${categoryId}&difficulty=${difficulty}`;
   getQuestions(url);
 }
